@@ -6,8 +6,10 @@
           console.log(lastScript);
           let scriptUrl = new URL(lastScript.src);
           console.log(scriptUrl);
-          let uniqueId = scriptUrl.searchParams.get("unique_id");
-          console.log(uniqueId);
+          let userId = scriptUrl.searchParams.get("userid");
+          console.log(userId);
+          let formId = scriptUrl.searchParams.get("formid");
+          console.log(formId);
 
           console.log("Script loaded");
           fetch("http://localhost:3000/api/scriptload", {
@@ -26,7 +28,7 @@
           setTimeout(function () {
             const iframe = document.createElement("iframe");
             iframe.setAttribute("id", "payment__widget__iframe");
-            iframe.src = "http://localhost:3000/form/" + uniqueId;
+            iframe.src = `http://localhost:3000/${userId}/${formId}/form/`;
             iframe.style.position = "absolute";
             iframe.style.right = "0";
             iframe.style.bottom = "0";
